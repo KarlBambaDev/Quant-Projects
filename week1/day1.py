@@ -7,12 +7,12 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path 
-def fetch_stock_data(ticker, start_date='2020-01-01'):
+def fetch_stock_data(ticker, start_date='2025-08-02'):
     #fetches the historical stock data
     #arguments: ticker() = stock symbol
     #returns dataframe: stock price data
     print(f'Fetching data for {ticker}')
-    data = yf.download(ticker, start=start_date, end='2024-12-15')
+    data = yf.download(ticker, start=start_date, end='2025-11-15')
     print(f'Downloaded {len(data)} days of data')
     return data
 
@@ -33,7 +33,7 @@ def plot_stock_price(data,ticker):
 
 def main():
     #list called tickers
-    tickers = ['AAPL', 'MSFT', 'GOOGL', 'TSLA']
+    tickers = ['NVDA', 'SPY', 'AMD', 'FIG']
 #loops through the tickers in the list of tickers and executes the following code
     for ticker in tickers:
         #data variable runs the ticker function that gets the stock data
