@@ -15,5 +15,20 @@ def fetch_stock_data(ticker, start_date='2020-01-01'):
     data = yf.download(ticker, start=start_date, end='2024-12-15')
     print(f'Downloaded {len(data)} days of data')
     return data
-ticker = 'RTX'
-fetch_stock_data(ticker)
+
+def plot_stock_price(data,ticker):
+    plt.figure(figsize=(12, 6))
+    plt.plot(data['Close'], linewidth =2)
+    plt.title(f'{ticker} Stock Price', fontsize=16)
+    plt.xlabel('Date')
+    plt.ylabel('Price($)')
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    output_path = Path(__file__).parent.parent/'outputs'/f'{ticker}_price.png'
+    output_path.parent.mkdir(exist_ok=True)
+    plt.savefig(output_path)
+    print(f'saved chart as {output_path}')
+
+
+def main(ticker):
+    
